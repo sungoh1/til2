@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교실 자리 배치</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: auto;
+        }
+        td {
+            border: 1px solid black;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>교실 자리 배치</h1>
+    
+    <form id="seatingForm">
+        <label for="rows">행 수:</label>
+        <input type="number" id="rows" name="rows" min="1" required><br><br>
+        
+        <label for="columns">열 수:</label>
+        <input type="number" id="columns" name="columns" min="1" required><br><br>
+        
+        <button type="button" onclick="generateSeating()">자리 배치 생성</button>
+    </form>
+    
+    <div id="seatingPlan"></div>
+    
+    <script>
+        function generateSeating() {
+            var rows = document.getElementById("rows").value;
+            var columns = document.getElementById("columns").value;
+            
+            var seatingPlan = "<table>";
+            for (var i = 1; i <= rows; i++) {
+                seatingPlan += "<tr>";
+                for (var j = 1; j <= columns; j++) {
+                    seatingPlan += "<td>" + i + "-" + j + "</td>";
+                }
+                seatingPlan += "</tr>";
+            }
+            seatingPlan += "</table>";
+            
+            document.getElementById("seatingPlan").innerHTML = seatingPlan;
+        }
+    </script>
+</body>
+</html>
